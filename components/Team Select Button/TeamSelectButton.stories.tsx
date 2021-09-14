@@ -58,5 +58,12 @@ Default.args = {
 export const Selected = Template.bind({})
 Selected.args = {
   team: 'falcons',
-  selected: true,
+  active: true,
+}
+
+export const DisabledAndSelected = Template.bind({})
+DisabledAndSelected.args = {
+  team: 'dolphins',
+  active: true,
+  disabled: true,
 }

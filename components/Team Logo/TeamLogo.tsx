@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+// FIXME: giants logo is off-center
+
 export type Teams =
   | 'bears'
   | 'bengals'
@@ -35,7 +37,9 @@ export type Teams =
   | 'washington'
 
 type TeamLogoProps = {
+  // Single number used to set both width & height of the underlying svg
   size?: number
+  // The lowercase nickname  of a sports team
   logo: Teams
 }
 
@@ -1127,7 +1131,7 @@ const logoData = {
   },
 }
 const TeamLogo = ({ size = 96, logo }: TeamLogoProps) => {
-  const getAdjustedSize = logo => {
+  const setAdjustedSize = logo => {
     switch (logo) {
       case 'washington':
         size = 78
@@ -1139,7 +1143,7 @@ const TeamLogo = ({ size = 96, logo }: TeamLogoProps) => {
         break
     }
   }
-  getAdjustedSize(logo)
+  setAdjustedSize(logo)
   const { viewPort, path: Path } = logoData[logo]
   return (
     <svg
