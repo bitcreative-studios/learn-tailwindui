@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-type Teams =
+export type Teams =
   | 'bears'
   | 'bengals'
   | 'bills'
@@ -35,7 +35,7 @@ type Teams =
   | 'washington'
 
 type TeamLogoProps = {
-  size: number
+  size?: number
   logo: Teams
 }
 
@@ -1127,6 +1127,19 @@ const logoData = {
   },
 }
 const TeamLogo = ({ size = 96, logo }: TeamLogoProps) => {
+  const getAdjustedSize = logo => {
+    switch (logo) {
+      case 'washington':
+        size = 78
+        break
+      case 'raiders':
+        size = 80
+        break
+      default:
+        break
+    }
+  }
+  getAdjustedSize(logo)
   const { viewPort, path: Path } = logoData[logo]
   return (
     <svg
