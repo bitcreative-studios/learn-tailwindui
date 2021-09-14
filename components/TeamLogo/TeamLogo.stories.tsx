@@ -1,12 +1,13 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import TeamSelectButton from './TeamSelectButton'
+
+import TeamLogo from './TeamLogo'
 
 export default {
-  title: 'Elements/Team Select Button',
-  component: TeamSelectButton,
+  title: 'Elements/TeamLogo',
+  component: TeamLogo,
   argTypes: {
-    team: {
+    logo: {
       options: [
         'bears',
         'bengals',
@@ -44,26 +45,17 @@ export default {
       control: { type: 'select' },
     },
   },
-} as ComponentMeta<typeof TeamSelectButton>
+} as ComponentMeta<typeof TeamLogo>
 
-const Template: ComponentStory<typeof TeamSelectButton> = args => (
-  <TeamSelectButton {...args} />
-)
+const Template: ComponentStory<typeof TeamLogo> = args => <TeamLogo {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  team: 'falcons',
+  logo: 'broncos',
 }
 
-export const Selected = Template.bind({})
-Selected.args = {
-  team: 'falcons',
-  active: true,
-}
-
-export const DisabledAndSelected = Template.bind({})
-DisabledAndSelected.args = {
-  team: 'dolphins',
-  active: true,
-  disabled: true,
+export const Small = Template.bind({})
+Small.args = {
+  logo: 'cardinals',
+  size: 48,
 }

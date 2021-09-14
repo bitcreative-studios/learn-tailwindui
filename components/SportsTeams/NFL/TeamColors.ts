@@ -1,18 +1,14 @@
-import React, { useState } from 'react'
-import TeamLogo, { Teams } from '../Team Logo/TeamLogo'
-import clx from 'classnames'
+import exp from 'constants'
+import { Teams } from '../../TeamLogo/TeamLogo'
 
-type TeamSelectButtonProps = {
-  // The lowercase nickname  of a sports team
-  team: Teams
-  // A seed value to determine if this button is selected upon initial render
-  active?: boolean
-  //If disabled user can't change component's internal selected state & hover has no effect
-  disabled?: boolean
+type TeamSelectButtonColor = {
+  // Tailwind class to control hover state of the outer border of a TeamSelectButton. Uses JIT syntax to use official colors of teams in hex
+  hoverBorderColor: string
+  // Tailwind class to control selected state of the outer 'ring' of a TeamSelectButton. Uses JIT syntax to use official colors of teams in hex
+  selectedColor: string
 }
 
-// TODO: extract selection color from team logo
-const colors = {
+const nflColors: Record<Teams, TeamSelectButtonColor> = {
   bears: {
     hoverBorderColor: 'hover:border-[#C83803]',
     selectedColor: 'bg-[#C83803]',
@@ -143,27 +139,4 @@ const colors = {
   },
 }
 
-const TeamSelectButton = ({
-  team,
-  active = false,
-  disabled,
-}: TeamSelectButtonProps) => {
-  const [selected, setSelected] = useState(active)
-  const { hoverBorderColor, selectedColor } = colors[team]
-
-  const selectorStyles = [
-    'relative  h-44 w-44 rounded-3xl flex justify-center items-center',
-    'border-2 border-transparent hover:cursor-pointer transition duration-150 ',
-    hoverBorderColor,
-    selected ? selectedColor : 'bg-gray-100',
-  ]
-  return (
-    <div onClick={() => setSelected(v => !v)} className={clx(selectorStyles)}>
-      <div className="h-36 w-36 rounded-3xl flex items-center justify-center overflow-hidden bg-white drop-shadow transition duration-150">
-        <TeamLogo logo={team} />
-      </div>
-    </div>
-  )
-}
-
-export default TeamSelectButton
+export default nflColors

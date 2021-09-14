@@ -1130,14 +1130,14 @@ const logoData = {
     ),
   },
 }
-const TeamLogo = ({ size = 96, logo }: TeamLogoProps) => {
+const TeamLogo = ({ size = 72, logo }: TeamLogoProps) => {
   const setAdjustedSize = logo => {
     switch (logo) {
       case 'washington':
-        size = 78
+        size = 59
         break
       case 'raiders':
-        size = 80
+        size = 60
         break
       default:
         break
